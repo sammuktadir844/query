@@ -15,8 +15,5 @@ use App\Http\Controllers\QueryController;
 |
 */
 
-Route::middleware('auth:sanctum')
-    ->get('/user', function (Request $request) {
-        return $request->user();
-    });
-Route::post('/query', [QueryController::class, 'store']);
+
+Route::apiResource('/queries', QueryController::class);

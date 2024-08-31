@@ -7,6 +7,7 @@ use App\Http\Requests\StoreQueryRequest;
 use App\Http\Requests\UpdateQueryRequest;
 use Illuminate\Http\Request;
 
+
 class QueryController extends Controller
 {
     /**
@@ -14,13 +15,9 @@ class QueryController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $queries =  Query::all();
-            return response()->json(['data' => $queries], 200);
-        }
 
-
-        return view('admin.queries.index');
+        $queries =  Query::all();
+        return response()->json(['data' => $queries], 200);
     }
 
     /**
@@ -36,10 +33,12 @@ class QueryController extends Controller
      */
     public function store(StoreQueryRequest $request)
     {
+
+        // return $request;
         $query = Query::create([
             'full_name' => $request->full_name,
             'email' => $request->email,
-            'Company_name' => $request->Company_name,
+            'company_name' => $request->company_name,
             'phone_number' => $request->phone_number,
             'message' => $request->message
         ]);
